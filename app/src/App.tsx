@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/queryClient';
-import { isSupabaseConfigured } from '@/lib/supabase';
+import { configError, isSupabaseConfigured } from '@/lib/supabase';
 import { AuthProvider } from '@/context/AuthContext';
 import { ToastProvider } from '@/components/ui/Toast';
 import { AppShell } from '@/components/layout/AppShell';
@@ -43,9 +43,11 @@ function NotConfigured() {
   return (
     <div className="flex min-h-dvh items-center justify-center bg-navy-950 p-6 text-center text-white">
       <div className="max-w-md">
-        <h1 className="text-xl font-bold text-gold-400">Supabase is not configured</h1>
-        <p className="mt-2 text-slate-300">
-          Set <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> (see <code>.env.example</code>) and restart.
+        <h1 className="text-xl font-bold text-gold-400">App settings are incorrect</h1>
+        <p className="mt-3 text-slate-200">{configError}</p>
+        <p className="mt-4 text-sm text-slate-400">
+          Fix it in Netlify → Site configuration → Environment variables (VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY), then
+          Deploys → Trigger deploy → Clear cache and deploy site.
         </p>
       </div>
     </div>
