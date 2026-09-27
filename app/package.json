@@ -1,0 +1,48 @@
+{
+  "name": "dreamland-rental-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "test:db": "./supabase/tests/run-db-tests.sh",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "stack:up": "./supabase/local/stack.sh up",
+    "stack:down": "./supabase/local/stack.sh down",
+    "db:bundle": "node scripts/bundle-migrations.mjs",
+    "test:ui": "node scripts/e2e-ui.mjs",
+    "user:create": "node scripts/create-local-user.mjs"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "@supabase/supabase-js": "^2.109.0",
+    "@tanstack/react-query": "^5.104.0",
+    "clsx": "^2.1.1",
+    "i18next": "^26.4.2",
+    "lucide-react": "^1.48.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-hook-form": "^7.89.0",
+    "react-i18next": "^17.0.15",
+    "react-router": "^7.18.4",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/ws": "^8.18.1",
+    "@vitejs/plugin-react": "^6.1.1",
+    "playwright": "^1.63.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1",
+    "vitest": "^4.1.11",
+    "ws": "^8.22.0"
+  }
+}

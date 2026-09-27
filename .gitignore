@@ -1,0 +1,9 @@
+node_modules
+app/dist
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+app/supabase/local/.proxy.*
+e2e-screenshots

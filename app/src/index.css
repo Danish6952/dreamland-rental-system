@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* Design tokens — documentation/06_UI_UX_Design.md §2 */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-navy-950: #0a1628;
+  --color-navy-900: #0f2040;
+  --color-navy-800: #16294f;
+  --color-navy-700: #1e3a66;
+  --color-navy-600: #2b4d80;
+  --color-gold-600: #b08a1a;
+  --color-gold-500: #c9a227;
+  --color-gold-400: #d8b64a;
+  --color-gold-100: #f6edd0;
+  --color-gold-50: #fbf7e8;
+}
+
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; }
+  body { @apply bg-slate-50 text-slate-900 antialiased; font-feature-settings: "cv11", "ss01"; }
+  html[lang="ur"] body { font-family: "Noto Nastaliq Urdu", var(--font-sans); line-height: 1.9; }
+  input, select, textarea, button { font: inherit; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-gold-500; }
+}
+
+@layer components {
+  .input {
+    @apply block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-[15px] text-slate-900
+           placeholder:text-slate-400 shadow-xs transition
+           focus:border-navy-700 focus:ring-2 focus:ring-navy-700/15 focus:outline-none
+           disabled:bg-slate-100 disabled:text-slate-500;
+    min-height: 44px;
+  }
+  .input[aria-invalid="true"] { @apply border-red-500 focus:border-red-600 focus:ring-red-500/15; }
+  .card { @apply rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/70; }
+  .num { font-variant-numeric: tabular-nums; }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+  .safe-top { padding-top: env(safe-area-inset-top); }
+}
